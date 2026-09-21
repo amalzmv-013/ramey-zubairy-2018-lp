@@ -48,3 +48,6 @@ po/*~
 
 # RStudio Connect folder
 rsconnect/
+
+# Regenerable data intermediates
+data/processed/*.rds
