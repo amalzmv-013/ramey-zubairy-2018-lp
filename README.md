@@ -17,7 +17,7 @@ Impulse response functions from **linear and state-dependent local projections**
 Scripts are in `R/` and should be run in numbered order:
 
 | Script | Contents |
-|------------------------------------|------------------------------------|
+|----|----|
 | `01_data_prep.R` | Load Excel, construct real series, scale by trend GDP |
 | `02_linear_lp.R` | Linear LP estimation, Newey-West SEs |
 | `03_state_dep_lp.R` | State-dependent LP, unemployment threshold, WWII exclusion |
