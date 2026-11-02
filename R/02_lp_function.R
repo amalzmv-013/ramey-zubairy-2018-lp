@@ -274,3 +274,37 @@ irf_g_bp <- purrr::map_dfr(0:20, ~ estimate_horizon_bp(h = .x, outcome = "g", sh
 irf_y_bp
 irf_g_bp
 
+
+
+# Figure 5  ---------------------------------------------------------------
+
+# Figure 5 assembly ------------------------------------------------------
+
+overlay_g <- data.frame(h = irf_g_linear$h, linear = irf_g_linear$coef,
+                        high = irf_g_state$coef_high, low = irf_g_state$coef_low)
+overlay_y <- data.frame(h = irf_y_linear$h, linear = irf_y_linear$coef,
+                        high = irf_y_state$coef_high, low = irf_y_state$coef_low)
+
+plot_irf_overlay <- function(df, hi_color = "steelblue", lo_color = "firebrick") {
+  ggplot(df, aes(x = h)) +
+    geom_line(aes(y = linear), color = "black", linewidth = 1) +
+    geom_line(aes(y = high), color = hi_color, linewidth = 1, linetype = "dashed") +
+    geom_line(aes(y = low),  color = lo_color, linewidth = 1) +
+    geom_point(aes(y = low), color = lo_color, shape = 1, size = 1.8) +
+    geom_hline(yintercept = 0, linetype = "dashed", color = "grey40") +
+    labs(x = NULL, y = NULL) +
+    theme_minimal() +
+    theme(panel.grid.major = element_blank(),
+          panel.grid.minor = element_blank(),
+          aspect.ratio = 1)
+}
+
+fig5 <- (plot_irf_overlay(overlay_g) + labs(y = "Government spending") |
+           p_g + ggtitle("Linear") |
+           p_g_state + ggtitle("State-dependent")) /
+  (plot_irf_overlay(overlay_y) + labs(y = "GDP", x = "quarter") |
+     p_y + labs(x = "quarter") |
+     p_y_state + labs(x = "quarter"))
+
+fig5
+ggsave("output/figures/figure5_full.png", fig5, width = 10, height = 7, dpi = 150)

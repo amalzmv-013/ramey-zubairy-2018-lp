@@ -1,0 +1,11 @@
+"spec","horizon","ours","ours_se","paper","paper_se"
+"Linear","2-year",0.664,0.069,0.66,0.067
+"Linear","4-year",0.713,0.043,0.71,0.044
+"Unemployment: high","2-year",0.603,0.102,0.6,0.095
+"Unemployment: low","2-year",0.595,0.089,0.59,0.091
+"Unemployment: high","4-year",0.682,0.055,0.68,0.052
+"Unemployment: low","4-year",0.668,0.125,0.67,0.121
+"NBER: recession","2-year",0.627,0.192,0.63,NA
+"NBER: expansion","2-year",0.547,0.084,0.55,NA
+"NBER: recession","4-year",0.673,0.234,0.67,NA
+"NBER: expansion","4-year",0.64,0.051,0.64,NA
